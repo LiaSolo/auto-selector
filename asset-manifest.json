@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/auto-selector/static/css/main.0337c274.css",
+    "main.js": "/auto-selector/static/js/main.44acd895.js",
+    "index.html": "/auto-selector/index.html",
+    "main.0337c274.css.map": "/auto-selector/static/css/main.0337c274.css.map",
+    "main.44acd895.js.map": "/auto-selector/static/js/main.44acd895.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0337c274.css",
+    "static/js/main.44acd895.js"
+  ]
+}
