@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/auto-selector/static/css/main.500587b2.css",
-    "main.js": "/auto-selector/static/js/main.0c57b82c.js",
+    "main.css": "/auto-selector/static/css/main.99b038bd.css",
+    "main.js": "/auto-selector/static/js/main.da796c50.js",
     "static/media/AvenirNextCyr-ThinItalic.eot": "/auto-selector/static/media/AvenirNextCyr-ThinItalic.e701616ad0d2198e7b01.eot",
     "static/media/AvenirNextCyr-LightItalic.eot": "/auto-selector/static/media/AvenirNextCyr-LightItalic.0c909f16039c2393e14f.eot",
     "static/media/AvenirNextCyr-ThinItalic.ttf": "/auto-selector/static/media/AvenirNextCyr-ThinItalic.48d25d6e184d4a8db5d2.ttf",
@@ -67,11 +67,11 @@
     "static/media/AvenirNextCyr-Demi.woff2": "/auto-selector/static/media/AvenirNextCyr-Demi.f033b66b803cabbd66b5.woff2",
     "static/media/AvenirNextCyr-UltraLight.woff2": "/auto-selector/static/media/AvenirNextCyr-UltraLight.4b10c257d0cc967d8a17.woff2",
     "index.html": "/auto-selector/index.html",
-    "main.500587b2.css.map": "/auto-selector/static/css/main.500587b2.css.map",
-    "main.0c57b82c.js.map": "/auto-selector/static/js/main.0c57b82c.js.map"
+    "main.99b038bd.css.map": "/auto-selector/static/css/main.99b038bd.css.map",
+    "main.da796c50.js.map": "/auto-selector/static/js/main.da796c50.js.map"
   },
   "entrypoints": [
-    "static/css/main.500587b2.css",
-    "static/js/main.0c57b82c.js"
+    "static/css/main.99b038bd.css",
+    "static/js/main.da796c50.js"
   ]
 }
