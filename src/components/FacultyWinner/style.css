@@ -1,0 +1,18 @@
+.facultyWinner_outer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    transition: .5s linear all;
+    background: white;
+    border-radius: 20px;
+    padding: 3px;
+    min-height: 76px;
+    font-size: 1.5em;
+    gap: 10px;
+    width: 100%;
+}
+
+.transparent {
+    opacity: 0.5;
+}

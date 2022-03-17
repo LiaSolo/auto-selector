@@ -1,0 +1,58 @@
+.container-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: row;
+  gap: 20px;
+  font-size: 1.5em;
+
+}
+
+.outer-form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.outer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  gap: 20px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.settings-inside {
+  text-align: center;
+}
+
+.text-input {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+.error {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex: 1
+}
