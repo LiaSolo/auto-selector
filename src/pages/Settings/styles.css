@@ -5,7 +5,7 @@
   margin: auto;
   flex-direction: row;
   gap: 20px;
-  font-size: 1.5em;
+  font-size: 1em;
 
 }
 
@@ -34,10 +34,6 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-}
-
-.settings-inside {
-  text-align: center;
 }
 
 .text-input {

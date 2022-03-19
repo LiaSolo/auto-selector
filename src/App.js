@@ -8,6 +8,8 @@ import {
 import Main from "./pages/Main";
 import Settings from "./pages/Settings";
 
+
+
 function App() {
 
 
@@ -15,7 +17,7 @@ function App() {
         <BrowserRouter basename="auto-selector">
             <Routes>
                 <Route path="/" element={<Main/>}/>
-                <Route path="/*" element={<Settings/>}/>
+                <Route path="/settings" element={<Settings/>}/>
             </Routes>
         </BrowserRouter>
     );

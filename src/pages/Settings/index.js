@@ -1,8 +1,7 @@
 import "./styles.css"
-import {allFacs as allFaculties} from "../../config";
+import {allFacs as allFaculties, back} from "../../config";
 import {useState} from "react";
 import axios from "axios"
-import {back} from "../../config";
 
 function Settings() {
     const [inputs, setInputs] = useState(
@@ -15,6 +14,22 @@ function Settings() {
 
     const [errorData, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+
+    const handleClickSendMessage = (event) => {
+        setError("")
+        event.preventDefault()
+        setLoading(true)
+        axios.post(`${back}/api/activate`, {
+            password: inputs.password,
+        })
+            .then(res => {
+                setLoading(false);
+            }).catch(error => {
+            setLoading(false);
+            setError(error)
+        })
+    }
 
     const handleOnChange = (position, state) => {
         setInputs((prev) => ({
@@ -77,8 +92,6 @@ function Settings() {
                 setError(error)
             })
         }
-
-
     }
 
     return (
@@ -132,6 +145,12 @@ function Settings() {
                 <label>Секретный пароль, чтобы ММ не взломал нас</label>
                 <input type="text" onChange={handleOnChangeText} name="password" value={inputs.password}/>
             </div>
+
+            <button
+                onClick={handleClickSendMessage}
+            >
+                Продвинуть сюжет
+            </button>
             {errorData && <p className="error">{JSON.stringify(errorData.toJSON())}</p>}
             {loading && <p className="loading">ща-ща я посылаю данные на сервак...</p>}
         </div>

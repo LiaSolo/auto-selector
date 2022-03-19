@@ -14,8 +14,9 @@ p {
 
 .title {
   font-family: "Avenir Next Cyr Medium";
-  font-size: 2em;
+  font-size: 3em;
   color: white;
+  margin: 20px;
 }
 
 .App {
@@ -38,7 +39,7 @@ p {
 }
 
 .container > .right {
-  flex-basis: 60%;
+  flex-basis: 55%;
 }
 
 .FacultyList {

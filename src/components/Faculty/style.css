@@ -4,10 +4,10 @@
     align-items: center;
     justify-content: flex-start;
     transition: .5s linear all;
-    width: 10vw;
     background: white;
     border-radius: 20px;
-    padding: 3px;
     font-size: 1em;
     gap: 10px;
+    padding: 3px 15px 3px 3px;
+    overflow-wrap: break-word;
 }

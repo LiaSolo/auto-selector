@@ -1,9 +1,7 @@
 import './style.css'
-import {HotKeys} from "react-hotkeys";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
 function Faculty({params, currFac, id, showOpacity}) {
-    const inputRef = useRef()
     const [shown, setShown] = useState(false)
 
     useEffect(() => {
@@ -14,7 +12,7 @@ function Faculty({params, currFac, id, showOpacity}) {
     }, [currFac])
 
     return (
-            <div className="faculty_outer" style={shown? {opacity: 0.5} : {opacity: 1}} ref={inputRef}>
+            <div className="faculty_outer" style={shown? {opacity: 0.5} : {opacity: 1}}>
                 <div className={`faculty_logo faculty_${params.color}`}>
                     <img src={`${process.env.PUBLIC_URL}/assets/logos/${params.logo}`} height="50px"/>
                 </div>

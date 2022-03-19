@@ -1,21 +1,17 @@
 import './styles.css';
 import Faculty from "../../components/Faculty";
-import {back, allFacs} from "../../config";
+import {allFacs, back, socketUrl} from "../../config";
 import {HotKeys} from "react-hotkeys";
 import {useEffect, useRef, useState} from "react";
 import FacultyWinner from "../../components/FacultyWinner";
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 import axios from "axios";
+import useWebSocket from "react-use-websocket";
 
 const keyMap = {
     NEXT: "d"
 };
-
-let allFaculties;
-let winners;
-let iterator;
-let winnersList;
 
 function Main() {
     const inputRef = useRef()
@@ -44,7 +40,7 @@ function Main() {
             console.log(error)
         })
 
-
+        inputRef.current.focus();
     }, [])
 
     const handlers = {
@@ -58,9 +54,15 @@ function Main() {
         }
     }
 
+    const {lastMessage} = useWebSocket(socketUrl, {
+        onOpen: () => console.log('opened'),
+        onMessage: handlers.NEXT,
+        shouldReconnect: (closeEvent) => true,
+    });
+
 
     return (
-        <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true}>
+        <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} innerRef={inputRef}>
             {confetti &&
             <Confetti
                 gravity={0.1}
@@ -89,7 +91,7 @@ function Main() {
                             </div>
                         </div>
                         <div className="left">
-                            <p className="title"> Им придется петь еще раз</p>
+                            <p className="title">Финалисты</p>
                             <div className="winnersList">
                                 {
                                     state.winnersList.map((faculty, index) =>
