@@ -4,7 +4,6 @@ import {allFacs, back, socketUrl} from "../../config";
 import {HotKeys} from "react-hotkeys";
 import {useEffect, useRef, useState} from "react";
 import FacultyWinner from "../../components/FacultyWinner";
-import useWindowSize from 'react-use/lib/useWindowSize'
 import axios from "axios";
 import useWebSocket from "react-use-websocket";
 import {Link} from "react-router-dom";
@@ -61,7 +60,7 @@ function Main() {
     return (
         <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} innerRef={inputRef}>
             <div className="App" style={{
-                backgroundImage: 'url(./assets/background.png)'
+                backgroundImage: 'url(./assets/BGTimer.gif)'
             }}>
                 <div className="line">
                     <div className="container">
