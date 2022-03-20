@@ -6,8 +6,13 @@
     transition: .5s linear all;
     background: white;
     border-radius: 20px;
-    font-size: 1em;
     gap: 10px;
-    padding: 3px 15px 3px 3px;
+    width: 200px;
+    padding: 3px 3px 3px 5px;
     overflow-wrap: break-word;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.faculty_outer p {
+    margin: 0;
 }

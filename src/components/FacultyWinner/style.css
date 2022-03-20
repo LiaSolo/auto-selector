@@ -4,15 +4,53 @@
     align-items: center;
     justify-content: flex-start;
     transition: .5s linear all;
-    background: white;
+    background: rgba(255,255,255,0.5);
     border-radius: 20px;
-    padding: 3px;
-    min-height: 76px;
+    min-height: 62px;
     font-size: 1.5em;
     gap: 10px;
     width: 100%;
 }
 
-.transparent {
-    opacity: 0.5;
+.facultyWinner_outer p {
+    margin: 0;
+}
+
+.facultyWinner_outer .faculty_logo, .facultyWinner_outer .faculty_name {
+    animation: fuck 1s;
+}
+
+.facultyWinner_outer .faculty_logo {
+    margin: 3px;
+}
+
+.gradient{
+    margin: 0;
+    padding: 3px;
+    height: 56px;
+    border-radius: 20px;
+    animation: slidein 1.5s;
+    width: 100%;
+    z-index: 1;
+    opacity: 1;
+}
+
+@keyframes fuck {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slidein {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }

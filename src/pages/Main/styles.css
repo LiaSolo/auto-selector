@@ -1,7 +1,3 @@
-p {
-  font-family: "Avenir Next Cyr";
-}
-
 .container {
   display: flex;
   flex-direction: row;
@@ -20,6 +16,7 @@ p {
 }
 
 .App {
+  height: 100vh;
   position: absolute;
   top:0;
   bottom: 0;
@@ -32,8 +29,6 @@ p {
 }
 
 .line {
-  top: 50%;
-  background: rgba(0, 0, 0, 0.5);
   margin-top: 200px;
   margin-bottom: 200px;
 }
@@ -47,13 +42,14 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 
 .winnersList {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 70%
+  width: 70%;
 }
 
 
@@ -62,6 +58,7 @@ p {
   background-size: cover;
   height: 50vh !important;
   width: 85.4vh !important;
+  margin: auto;
 }
 
 .right {

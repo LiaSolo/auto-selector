@@ -1,43 +1,65 @@
 import "./styles.css"
 import {allFacs as allFaculties, back} from "../../config";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios"
 
 function Settings() {
     const [inputs, setInputs] = useState(
         {
-            faculty: new Array(Object.keys(allFaculties).length).fill(false),
-            winners: new Array(Object.keys(allFaculties).length).fill(false),
+            faculty: new Set(),
+            winners: new Set(),
             password: ""
         }
     );
 
-    const [errorData, setError] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [fetching, setFetching] = useState({
+        error: "",
+        loading: false,
+        ok: ""
+    })
 
+    const [currWinners, setCurrWinners] = useState([])
+
+    const updateWinners = () => {
+        axios.get(`${back}/api/faculty`)
+            .then(res => {
+                setCurrWinners(res.data)
+            }).catch(error => {
+                console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        document.title = "Настройки авто-селектора"
+        updateWinners()
+    }, []);
 
     const handleClickSendMessage = (event) => {
-        setError("")
+        setFetching((prev) => ({...prev, ok: "", error: "", loading: true}))
         event.preventDefault()
-        setLoading(true)
         axios.post(`${back}/api/activate`, {
             password: inputs.password,
         })
-            .then(res => {
-                setLoading(false);
+            .then(() => {
+                setFetching((prev) => ({...prev, ok: "все оки"}))
             }).catch(error => {
-            setLoading(false);
-            setError(error)
-        })
+                setFetching((prev) => ({...prev, error: error}))
+            }).finally(() => {
+                setFetching((prev) => ({...prev, loading: false}))
+            })
     }
 
-    const handleOnChange = (position, state) => {
-        setInputs((prev) => ({
-            ...prev, [state]: inputs[state].map((item, index) =>
-                index === position ? !item : item
-            )
-        }));
+    const handleCheckbox = (index, state) => {
+        if (inputs[state].has(index))
+            inputs[state].delete(index);
+        else
+            inputs[state].add(index);
+
+        // чтобы реакт понимал что надо бы обновить стейт для отрисовки текущего порядка победителей
+        if (state === 'winners')
+            setInputs((prev) => ({...prev, [state]: inputs[state]}))
     }
+
 
     const handleOnChangeText = (event) => {
         const name = event.target.name;
@@ -46,58 +68,39 @@ function Settings() {
     }
 
 
-    const handleSubmitAll = (event) => {
-        setError("")
-        event.preventDefault()
-        const facultyData = inputs.faculty.map((checkbox, index) => checkbox ? index + 1 : null).filter(x => x)
-        const headers = {
-            'Content-Type': 'application/json'
-        };
+    const handleSubmit = (state) => {
+        return (event) => {
+            setFetching((prev) => ({...prev, ok: "", error: ""}))
+            event.preventDefault()
+            const data = [...inputs[state]]
+            const headers = {
+                'Content-Type': 'application/json'
+            };
 
-        if (facultyData.length) {
-            setLoading(true)
-            axios.post(`${back}/api/faculty`, {
-                password: inputs.password,
-                faculty: facultyData,
-            }, {headers})
-                .then(res => {
-                    setLoading(false);
-                    console.log(res.data);
-                }).catch(error => {
-                setLoading(false);
-                setError(error)
-            })
+            if (data.length) {
+                setFetching((prev) => ({...prev, loading: true}))
+                axios.post(`${back}/api/${state}`, {
+                    password: inputs.password,
+                    [state]: data,
+                }, {headers})
+                    .then(() => {
+                        setFetching((prev) => ({...prev, ok: "все оки"}))
+                        updateWinners();
+                        setInputs((prev) => ({...prev, winners: new Set()}))
+                    }).catch(error => {
+                        setFetching((prev) => ({...prev, error: error}))
+                    }).finally(() => {
+                        setFetching((prev) => ({...prev, loading: false}))
+                    })
+            }
         }
-    }
 
-    const handleSubmitWinners = (event) => {
-        setError("")
-        event.preventDefault()
-        const winnersData = inputs.winners.map((checkbox, index) => checkbox ? index + 1 : null).filter(x => x)
-        const headers = {
-            'Content-Type': 'application/json'
-        };
-
-        if (winnersData.length) {
-            setLoading(true)
-            axios.post(`${back}/api/winners`, {
-                password: inputs.password,
-                winners: winnersData,
-            }, {headers})
-                .then(res => {
-                    setLoading(false);
-                    console.log(res.data);
-                }).catch(error => {
-                setLoading(false);
-                setError(error)
-            })
-        }
     }
 
     return (
         <div className="outer-container">
             <div className="outer-form">
-                <form className="container-form" onSubmit={handleSubmitAll}>
+                <form className="container-form" onSubmit={handleSubmit('faculty')}>
                     <div className="settings-inside">
                         <p>Кто участвует вообще?</p>
                         {
@@ -108,51 +111,53 @@ function Settings() {
                                         id={`custom-checkbox-${index}`}
                                         name={allFaculties[faculty].name}
                                         value={allFaculties[faculty].name}
-                                        checked={inputs.faculty[index]}
-                                        onChange={() => handleOnChange(index, "faculty")}
+                                        onChange={() => handleCheckbox(faculty, "faculty")}
                                     />
                                     <label htmlFor={`custom-checkbox-${index}`}>{allFaculties[faculty].name}</label>
                                 </div>
                             )
                         }
-                        <button type="submit" onSubmit={handleSubmitAll}>Отправить участников</button>
+                        <button type="submit" onSubmit={handleSubmit('faculty')}>Отправить участников</button>
                     </div>
                 </form>
-                <form className="container-form" onSubmit={handleSubmitWinners}>
+                <form className="container-form" onSubmit={handleSubmit('winners')}>
                     <div className="settings-inside">
                         <p>Че кто победил?</p>
                         {
-                            Object.keys(allFaculties).map((faculty, index) =>
+                            currWinners.map((faculty, index) =>
                                 <div className="option" key={faculty}>
                                     <input
                                         type="checkbox"
                                         id={`custom-checkbox-${index}`}
                                         name={allFaculties[faculty].name}
                                         value={allFaculties[faculty].name}
-                                        checked={inputs.winners[index]}
-                                        onChange={() => handleOnChange(index, "winners")}
+                                        onChange={() => handleCheckbox(faculty, "winners")}
                                     />
                                     <label htmlFor={`custom-checkbox-${index}`}>{allFaculties[faculty].name}</label>
                                 </div>
                             )
                         }
-                        <button type="submit" onSubmit={handleSubmitWinners}>Решить судьбу унивидения</button>
+                        <button type="submit" onSubmit={handleSubmit('winners')}>Решить судьбу унивидения</button>
                     </div>
                 </form>
             </div>
-
+            <div className="order">
+                {
+                    [...inputs.winners].map((faculty, index) =>
+                    <p key={faculty}>{index + 1} - {allFaculties[faculty].name}</p>)
+                }
+            </div>
             <div className="text-input">
                 <label>Секретный пароль, чтобы ММ не взломал нас</label>
                 <input type="text" onChange={handleOnChangeText} name="password" value={inputs.password}/>
             </div>
 
-            <button
-                onClick={handleClickSendMessage}
-            >
+            <button onClick={handleClickSendMessage}>
                 Продвинуть сюжет
             </button>
-            {errorData && <p className="error">{JSON.stringify(errorData.toJSON())}</p>}
-            {loading && <p className="loading">ща-ща я посылаю данные на сервак...</p>}
+            {fetching.error && <p className="error">Что-то пошло не так - {fetching.error.toJSON().message}</p>}
+            {fetching.ok &&  <p className="ok">{fetching.ok}</p>}
+            {fetching.loading && <p className="loading">ща-ща я посылаю данные на сервак...</p>}
         </div>
     )
 }

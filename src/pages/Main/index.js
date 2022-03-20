@@ -5,9 +5,9 @@ import {HotKeys} from "react-hotkeys";
 import {useEffect, useRef, useState} from "react";
 import FacultyWinner from "../../components/FacultyWinner";
 import useWindowSize from 'react-use/lib/useWindowSize'
-import Confetti from 'react-confetti'
 import axios from "axios";
 import useWebSocket from "react-use-websocket";
+import {Link} from "react-router-dom";
 
 const keyMap = {
     NEXT: "d"
@@ -18,8 +18,6 @@ function Main() {
     const [currFac, setFac] = useState(1000);
     const [counter, setCounter] = useState(0);
     const [state, setState] = useState({all: [], winners: [], iterator: undefined, winnersList: []});
-    const [confetti, setConfetti] = useState(false);
-    const {width, height} = useWindowSize()
 
     useEffect(() => {
         axios.get(`${back}/api/faculty`)
@@ -45,7 +43,6 @@ function Main() {
 
     const handlers = {
         NEXT: () => {
-            setConfetti(true)
             setCounter(counter + 1)
             const Fac = state.iterator.next().value
             setFac(Fac)
@@ -63,18 +60,8 @@ function Main() {
 
     return (
         <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} innerRef={inputRef}>
-            {confetti &&
-            <Confetti
-                gravity={0.1}
-                initialVelocityY={20}
-                width={width}
-                height={height}
-                recycle={false}
-                numberOfPieces={500}
-                onConfettiComplete={() => setConfetti(false)}
-            />}
             <div className="App" style={{
-                backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/background.png'})`
+                backgroundImage: 'url(./assets/background.png)'
             }}>
                 <div className="line">
                     <div className="container">
@@ -92,6 +79,7 @@ function Main() {
                         </div>
                         <div className="left">
                             <p className="title">Финалисты</p>
+                            <Link to="/settings" />
                             <div className="winnersList">
                                 {
                                     state.winnersList.map((faculty, index) =>

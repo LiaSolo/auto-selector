@@ -1,7 +1,7 @@
 import './App.css';
 import './font/stylesheet.css'
 import {
-    BrowserRouter,
+    HashRouter,
     Routes,
     Route,
 } from "react-router-dom";
@@ -14,12 +14,12 @@ function App() {
 
 
     return (
-        <BrowserRouter basename="auto-selector">
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<Main/>}/>
                 <Route path="/settings" element={<Settings/>}/>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
