@@ -65,7 +65,9 @@ function Main() {
                 <div className="line">
                     <div className="container">
                         <div className="right">
-                            <div className="video"></div>
+                            <div className="video" style={{
+                                backgroundImage: 'url(./assets/Logo.png)'
+                            }} />
                             <div className="FacultyList">
                                 {
                                     Object.values(state.all).map((faculty, index) =>

@@ -48,7 +48,7 @@ export let allFacs = {
         }
     },
     7: {
-        name: "ИНОЗ",
+        name: "ИНоЗ",
         color: "#ff6600",
         logo: "inoz.png",
         styles: {

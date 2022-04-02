@@ -54,8 +54,9 @@
 
 
 .video {
-  background: url("https://i.pinimg.com/originals/ae/fc/b2/aefcb2062b2106d1a573926a51cf41fc.jpg") no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 50vh !important;
   width: 85.4vh !important;
   margin: auto;
