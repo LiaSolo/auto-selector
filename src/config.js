@@ -194,4 +194,5 @@ export let allFacs = {
 }
 
 export const back = "http://185.26.121.248:8080"
+export const backFinal = "http://185.26.121.248:5000"
 export const socketUrl = "ws://185.26.121.248:8081"

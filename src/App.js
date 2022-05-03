@@ -6,6 +6,7 @@ import {
     Route,
 } from "react-router-dom";
 import Main from "./pages/Main";
+import Final from "./pages/Final";
 import Settings from "./pages/Settings";
 
 
@@ -17,6 +18,7 @@ function App() {
         <HashRouter>
             <Routes>
                 <Route path="/" element={<Main/>}/>
+                <Route path="/final" element={<Final/>}/>
                 <Route path="/settings" element={<Settings/>}/>
             </Routes>
         </HashRouter>
