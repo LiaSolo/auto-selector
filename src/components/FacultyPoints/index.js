@@ -1,20 +1,19 @@
 import './style.css'
 import {motion} from 'framer-motion'
+import {useEffect, useState} from "react";
 
-function FacultyPoints({params, points, id}) {
-    const transition = {
-        type: "spring",
-        damping: 25,
-        stiffness: 120
-    };
+function FacultyPoints({params, points, id, currFac}) {
+    const [color, setColor] = useState('rgba(255, 255, 255, 0.5)');
 
-    const spring = {
-        type: "spring",
-        damping: 25,
-        stiffness: 120
-    };
+    useEffect(() => {
+        if (currFac && id === currFac.faculty) {
+            setColor('rgba(0, 0, 0, 0.5)');
+            setTimeout(() => setColor('rgba(155,255,148,0.5)'), 2000);
+        }
+    }, [currFac])
+
     return (
-        <motion.div layout transition={spring} className={'facultyWinner_outer2'}>
+        <motion.div animate={{background: color}} transition={{ ease: "easeOut", background: {duration: 0.5}, layout: {duration: 2} }} layout className={`facultyPoints_outer`}>
             <div className={`faculty_logo`}>
                 <motion.img src={`./assets/logos/${params.logo}`} height="50px"/>
             </div>

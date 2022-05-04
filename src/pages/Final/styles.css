@@ -14,8 +14,12 @@
   color: white;
   margin: 20px;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 5rem;
-  height: 3rem;
+  width: 10rem;
+  height: 7rem;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App {
@@ -37,13 +41,14 @@
 }
 
 .container > .right {
-  flex-basis: 55%;
+  flex-basis: 65%;
 }
 
 .FacultyPointList {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+  grid-auto-flow: column;
 }
 
 .video {
@@ -61,6 +66,7 @@
   flex-direction: column;
   gap: 50px;
   justify-content: center;
+  align-items: center;
 }
 
 .left {
@@ -68,6 +74,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1
+  flex: 1;
 }
 

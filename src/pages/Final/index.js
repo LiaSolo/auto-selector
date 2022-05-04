@@ -1,13 +1,10 @@
 import './styles.css';
-import Faculty from "../../components/Faculty";
 import {allFacs, backFinal, socketUrl} from "../../config";
 import {HotKeys} from "react-hotkeys";
 import {motion} from 'framer-motion'
 import {useEffect, useRef, useState} from "react";
-import FacultyWinner from "../../components/FacultyWinner";
 import axios from "axios";
 import useWebSocket from "react-use-websocket";
-import {Link} from "react-router-dom";
 import FacultyPoints from "components/FacultyPoints";
 
 const keyMap = {
@@ -22,11 +19,11 @@ function Final() {
     useEffect(() => {
         axios.get(`${backFinal}/final/audience`)
             .then(res => {
-                setState(prev => ({...prev, all: res.data.sort((a, b) => b.points - a.points), iterator: res.data.values()}))
+                console.log(res.data)
+                setState(prev => ({...prev, all: res.data.sort((a, b) => b.points - a.points), iterator: [...res.data].reverse().values()}))
             }).catch(error => {
             console.log(error)
         })
-
         inputRef.current.focus();
     }, [])
 
@@ -36,7 +33,6 @@ function Final() {
         const indexNewFac = state.all.findIndex(x => x.faculty === newFac.faculty)
         state.all[indexNewFac] = newFac;
         setState(prev => ({...prev, all: state.all.sort((a, b) => b.points - a.points)}))
-        console.log(state.all)
     }, [currFac]);
 
     const handlers = {
@@ -64,7 +60,7 @@ function Final() {
                                 <motion.div layout className="FacultyPointList">
                                     {
                                         Object.values(state.all).map((faculty, index) =>
-                                            <FacultyPoints id={faculty.faculty} key={faculty.faculty}  params={allFacs[faculty.faculty]} points={faculty.points}/>
+                                            <FacultyPoints currFac={currFac} id={faculty.faculty} key={faculty.faculty}  params={allFacs[faculty.faculty]} points={faculty.points}/>
                                         )
                                     }
                                 </motion.div>

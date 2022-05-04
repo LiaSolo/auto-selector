@@ -1,4 +1,4 @@
-.facultyWinner_outer2 {
+.facultyPoints_outer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -9,21 +9,23 @@
     font-size: 1.5em;
     font-weight: 500;
     gap: 10px;
-    width: 100%;
+    width: 25rem;
+    padding: 5px;
 }
 
-.facultyWinner_outer p {
+.active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.facultyPoints_outer p {
     margin: 0;
 }
 
-.facultyWinner_outer .faculty_logo, .facultyWinner_outer .faculty_name {
-    animation: fuck 1s;
-}
-
-.facultyWinner_outer .faculty_logo {
+.facultyPoints_outer .faculty_logo {
     margin: 10px;
 }
 
 .points {
     margin-left: auto;
+    margin-right: 10px;
 }
