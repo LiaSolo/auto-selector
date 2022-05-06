@@ -19,7 +19,6 @@ function Final() {
     useEffect(() => {
         axios.get(`${backFinal}/final/audience`)
             .then(res => {
-                console.log(res.data)
                 setState(prev => ({...prev, all: res.data.sort((a, b) => b.points - a.points), iterator: [...res.data].reverse().values()}))
             }).catch(error => {
             console.log(error)
@@ -27,12 +26,25 @@ function Final() {
         inputRef.current.focus();
     }, [])
 
+    const comparator = (a, b) => {
+        if (Number(a.points) === Number(b.points) && a.was !== b.was) {
+            if (a.was)
+                return -1;
+            if (b.was)
+                return 1;
+        }
+        else
+            return Number(b.points) - Number(a.points);
+    }
+
     useEffect(() => {
         if (!currFac) return;
-        const newFac = {...currFac, points: currFac.points + currFac.added};
+        const newFac = {...currFac, points: Number(currFac.points) + Number(currFac.added), was: true};
+        console.log(newFac)
         const indexNewFac = state.all.findIndex(x => x.faculty === newFac.faculty)
         state.all[indexNewFac] = newFac;
-        setState(prev => ({...prev, all: state.all.sort((a, b) => b.points - a.points)}))
+        setTimeout(() =>setState(prev => ({...prev, all: state.all.sort(comparator)})), 1000)
+        setTimeout(() => console.log(state), 1500)
     }, [currFac]);
 
     const handlers = {

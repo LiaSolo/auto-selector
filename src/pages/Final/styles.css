@@ -4,8 +4,9 @@
   align-items: center;
   height: 100%;
   max-width: 1500px;
-  width: 80vw;
+  width: 90vw;
   margin: auto;
+  gap: 10px;
 }
 
 .added {
@@ -33,6 +34,7 @@
   flex-direction: column;
   justify-content: center;
   background-size: cover;
+  overflow: hidden;
 }
 
 .line {
@@ -55,8 +57,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 50vh !important;
-  width: 85.4vh !important;
+  height: 40vh !important;
+  width: 71.1vh !important;
   margin: auto;
 }
 
@@ -67,6 +69,7 @@
   gap: 50px;
   justify-content: center;
   align-items: center;
+  flex: 1;
 }
 
 .left {
@@ -74,6 +77,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+
 }
 
