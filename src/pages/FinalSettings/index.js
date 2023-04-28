@@ -1,7 +1,8 @@
 import "./styles.css"
 import {allFacs as allFaculties, back, backFinal} from "../../config";
 import {useEffect, useState} from "react";
-import axios from "axios"
+import axios from "axios";
+import useWebSocket from 'react-use-websocket';
 
 function FinalSettings() {
     const [inputs, setInputs] = useState(
@@ -21,20 +22,15 @@ function FinalSettings() {
     useEffect(() => {
         document.title = "Настройки авто-селектора для финала"
     }, []);
+    
+    const { sendMessage } = useWebSocket(socketUrl);
 
     const handleClickSendMessage = (event) => {
         setFetching((prev) => ({...prev, ok: "", error: "", loading: true}))
         event.preventDefault()
-        axios.post(`${back}/api/activate`, {
-            password: inputs.password,
-        })
-            .then(() => {
-                setFetching((prev) => ({...prev, ok: "все оки"}))
-            }).catch(error => {
-                setFetching((prev) => ({...prev, error: error}))
-            }).finally(() => {
-                setFetching((prev) => ({...prev, loading: false}))
-            })
+        sendMessage('111');
+        setFetching((prev) => ({...prev, ok: "все оки"}));
+        setFetching((prev) => ({...prev, loading: false}));
     }
 
     const handleCheckbox = (index) => {
