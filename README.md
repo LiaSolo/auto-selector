@@ -62,3 +62,17 @@ https://github.com/konnovK/univision2022backend
 - Доступ к файлам сервера по FTP можно устроить с помощью FileZilla 
 - Можно подключиться к серверу по ssh и редактировать прямо в Visual Studio Code (установить расширение Remote SSH) 
 - Количество факультетов в строке: src/pages/<название страницы>/style.css .FacultyPointList grid-template-rows: 1fr - столько раз, сколько элементов в строке 
+- С полуфиналами в этом году не работали, но скорее всего в `src/pages/<Settings>/index.js` надо будет заменить handleClickSendMessage на код нижу (см. `src/pages/<FinalSettings>/index.js`)
+```
+import useWebSocket from 'react-use-websocket';
+
+const { sendMessage } = useWebSocket(socketUrl);
+
+    const handleClickSendMessage = (event) => {
+        setFetching((prev) => ({...prev, ok: "", error: "", loading: true}))
+        event.preventDefault()
+        sendMessage('111');
+        setFetching((prev) => ({...prev, ok: "все оки"}));
+        setFetching((prev) => ({...prev, loading: false}));
+    }
+```
