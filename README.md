@@ -9,7 +9,7 @@
 - `/` - объявление финалистов для полуфинала
 - `/final` - объявление финалистов для финала
 - `/settings` - настройки для полуфинала
-- `/settings-final` - настройки для финала
+- `/final-settings` - настройки для финала
 
 ## Как настроить проект
 
@@ -46,13 +46,19 @@ npm start
 
 ## Как задеплоить проект
 
-После запуска команды:
 ```
-npm run deploy
+npm run build
 ```
-проект сбилдится и вольется в ветку `gh-pages`, после чего обновится его версия на `Github Pages`
+
 
 ## Репозиторий бэкенда для этого проекта
 
 https://github.com/konnovK/univision2022backend
 
+# Полезные заметки и гайды 
+
+- Статический сервер: https://create-react-app.dev/docs/deployment/ 
+- Привязать домен с помощью apache2: https://2domains.ru/support/vps-i-servery/nastroyka-virtualnykh-khostov-apache-na-ubuntu 
+- Доступ к файлам сервера по FTP можно устроить с помощью FileZilla 
+- Можно подключиться к серверу по ssh и редактировать прямо в Visual Studio Code (установить расширение Remote SSH) 
+- Количество факультетов в строке: src/pages/<название страницы>/style.css .FacultyPointList grid-template-rows: 1fr - столько раз, сколько элементов в строке 
