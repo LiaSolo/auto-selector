@@ -59,6 +59,7 @@ https://github.com/konnovK/univision2022backend
 
 - Статический сервер: https://create-react-app.dev/docs/deployment/ 
 - Привязать домен с помощью apache2: https://2domains.ru/support/vps-i-servery/nastroyka-virtualnykh-khostov-apache-na-ubuntu 
+- System limit for number of file watchers reached: https://bobbyhadz.com/blog/system-limit-for-number-of-file-watchers-reached 
 - Доступ к файлам сервера по FTP можно устроить с помощью FileZilla 
 - Можно подключиться к серверу по ssh и редактировать прямо в Visual Studio Code (установить расширение Remote SSH) 
 - Количество факультетов в строке: src/pages/<название страницы>/style.css .FacultyPointList grid-template-rows: 1fr - столько раз, сколько элементов в строке 
