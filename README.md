@@ -63,7 +63,7 @@ https://github.com/konnovK/univision2022backend
 - Доступ к файлам сервера по FTP можно устроить с помощью FileZilla 
 - Можно подключиться к серверу по ssh и редактировать прямо в Visual Studio Code (установить расширение Remote SSH) 
 - Количество факультетов в строке: src/pages/<название страницы>/style.css .FacultyPointList grid-template-rows: 1fr - столько раз, сколько элементов в строке 
-- С полуфиналами в этом году не работали, но скорее всего в `src/pages/<Settings>/index.js` надо будет заменить handleClickSendMessage на код нижу (см. `src/pages/<FinalSettings>/index.js`)
+- С полуфиналами в этом году не работали, но скорее всего в `src/pages/<Settings>/index.js` надо будет заменить handleClickSendMessage на код ниже (см. `src/pages/<FinalSettings>/index.js`)
 ```
 import useWebSocket from 'react-use-websocket';
 
@@ -76,4 +76,13 @@ const { sendMessage } = useWebSocket(socketUrl);
         setFetching((prev) => ({...prev, ok: "все оки"}));
         setFetching((prev) => ({...prev, loading: false}));
     }
+```
+- Чтобы изменить цвет полос факультетов, которым выставлены зрительскиие баллы, изменить setColor согласно кодам цветов rgb в `src/components/FacultyPoints/index.js`
+```
+useEffect(() => {
+        if (currFac && id === currFac.faculty) {
+            setColor('rgba(0, 0, 0, 0.5)');
+            setTimeout(() => setColor('rgba(155,255,148,0.5)'), 3000);
+        }
+    }, [currFac])
 ```
