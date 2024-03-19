@@ -1,7 +1,8 @@
 import "./styles.css"
-import {allFacs as allFaculties, back} from "../../config";
+import {allFacs as allFaculties, back, socketUrl} from "../../config";
 import {useEffect, useState} from "react";
 import axios from "axios"
+import useWebSocket from 'react-use-websocket';
 
 function Settings() {
     const [inputs, setInputs] = useState(
@@ -20,6 +21,7 @@ function Settings() {
 
     const [currWinners, setCurrWinners] = useState([])
 
+    // Отображение чекбоксов "че кто победил"
     const updateWinners = () => {
         axios.get(`${back}/api/faculty`)
             .then(res => {
@@ -34,19 +36,14 @@ function Settings() {
         updateWinners()
     }, []);
 
+    const { sendMessage } = useWebSocket(socketUrl);
+
     const handleClickSendMessage = (event) => {
         setFetching((prev) => ({...prev, ok: "", error: "", loading: true}))
         event.preventDefault()
-        axios.post(`${back}/api/activate`, {
-            password: inputs.password,
-        })
-            .then(() => {
-                setFetching((prev) => ({...prev, ok: "все оки"}))
-            }).catch(error => {
-                setFetching((prev) => ({...prev, error: error}))
-            }).finally(() => {
-                setFetching((prev) => ({...prev, loading: false}))
-            })
+        sendMessage('111');
+        setFetching((prev) => ({...prev, ok: "все оки"}));
+        setFetching((prev) => ({...prev, loading: false}));
     }
 
     const handleCheckbox = (index, state) => {
