@@ -42,7 +42,7 @@ export let allFacs = {
     6: {
         name: "ВШМ",
         color: "#ff0000",
-        logo: "hse.png",
+        logo: "hsm.png",
         styles: {
             'background': 'linear-gradient(103deg, rgb(135, 0, 0) 0%, rgb(255, 51, 51) 100%)'
         }
@@ -178,7 +178,7 @@ export let allFacs = {
     23: {
         name: "Востоковедение",
         color: "#ff3c00",
-        logo: "vostfac.png",
+        logo: "vostok.png",
         styles: {
             'background': 'linear-gradient(74deg, rgb(255, 233, 60) 0%, rgb(255, 73, 18) 100%)'
         }
@@ -191,8 +191,56 @@ export let allFacs = {
             'background': 'linear-gradient(102deg, rgb(255, 0, 0) 0%, rgb(121, 18, 255) 100%)'
         }
     },
+    25: {
+        name: "Академическая гимназия",
+        color: "#ac0000",
+        logo: "gimn.png",
+        styles: {
+            'background': 'linear-gradient(103deg, rgb(204, 0, 32) 0%, rgb(150, 0, 24) 100%)'
+        }
+    },
+    26: {
+        name: "КФКиСЭТ",
+        color: "#ac0000",
+        logo: "college.png",
+        styles: {
+            'background': 'linear-gradient(102deg, rgb(255, 0, 0) 0%, rgb(0, 90, 235) 100%)'
+        }
+    },
+    27: {
+        name: "ИРКиАР",
+        color: "#ac0000",
+        logo: "irkiar.png",
+        styles: {
+            'background': 'linear-gradient(67deg, rgb(0, 255, 63)  0%, rgb(255, 218, 0) 100%)'
+        }
+    },
+    28: {
+        name: "Студенческие отряды",
+        color: "#ac0000",
+        logo: "studs.png",
+        styles: {
+            'background': 'linear-gradient(102deg, rgb(255, 0, 0) 0%, rgb(255, 81, 0) 100%)'
+        }
+    },
+    29: {
+        name: "Физкультура",
+        color: "#ac0000",
+        logo: "sport.png",
+        styles: {
+            'background': 'linear-gradient(102deg, rgb(219, 94, 26) 0%, rgb(255, 81, 0) 100%)'
+        }
+    },
+    30: {
+        name: "Химия",
+        color: "#ac0000",
+        logo: "chem.png",
+        styles: {
+            'background': 'linear-gradient(142deg, rgb(255, 145, 0) 0%, rgb(255, 143, 162) 100%)'
+        }
+    },
 }
 
-export const back = "http://<ip-адрес или домен сервера>:8000"
-export const backFinal = "http://<ip-адрес или домен сервера>:8000"
-export const socketUrl = "ws://<ip-адрес или домен сервера>:8000/ws"
+export const back = "http://localhost:8000"
+export const backFinal = "http://localhost:8000"
+export const socketUrl = "ws://localhost:8000/ws"

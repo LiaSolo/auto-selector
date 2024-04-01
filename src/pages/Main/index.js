@@ -60,13 +60,14 @@ function Main() {
     return (
         <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} innerRef={inputRef}>
             <div className="App" style={{
-                backgroundImage: 'url(./assets/BGTimer.gif)'
+                backgroundImage: 'url(./assets/background.png)'
             }}>
                 <div className="line">
                     <div className="container">
                         <div className="right">
                             <div className="video" style={{
-                                backgroundImage: 'url(./assets/Logo.png)'
+                                backgroundImage: 'url(./assets/Logo.png)',
+                                backgroundSize: '800px',
                             }} />
                             <div className="FacultyList">
                                 {
