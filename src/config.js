@@ -241,6 +241,6 @@ export let allFacs = {
     },
 }
 
-export const back = "http://localhost:8000"
-export const backFinal = "http://localhost:8000"
-export const socketUrl = "ws://localhost:8000/ws"
+export const back = `https://${process.env}:8000`
+export const backFinal = `https://${process.env.REACT_APP_BACKEND_URL}:8000`
+export const socketUrl = `ws://${process.env.REACT_APP_BACKEND_URL}:8000/ws`
