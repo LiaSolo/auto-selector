@@ -1,4 +1,5 @@
 import './style.css'
+import React from 'react';
 import {useEffect, useState} from "react";
 
 function Faculty({params, currFac, id, showOpacity}) {

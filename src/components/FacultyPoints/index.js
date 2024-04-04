@@ -1,4 +1,5 @@
 import './style.css'
+import React from 'react';
 import {motion} from 'framer-motion'
 import {useEffect, useState} from "react";
 
@@ -8,7 +9,7 @@ function FacultyPoints({params, points, id, currFac}) {
     useEffect(() => {
         if (currFac && id === currFac.faculty) {
             setColor('rgba(0, 0, 0, 0.5)');
-            setTimeout(() => setColor('rgba(155,255,148,0.5)'), 3000);
+            setTimeout(() => setColor('rgba(221,160,221,0.9)'), 3000);
         }
     }, [currFac])
 

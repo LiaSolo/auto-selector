@@ -1,4 +1,5 @@
 import "./styles.css"
+import React from 'react';
 import {allFacs as allFaculties, back, backFinal, socketUrl} from "../../config";
 import {useEffect, useState} from "react";
 import axios from "axios";

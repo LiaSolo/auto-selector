@@ -1,4 +1,5 @@
 import './styles.css';
+import React from 'react';
 import {allFacs, backFinal, socketUrl} from "../../config";
 import {HotKeys} from "react-hotkeys";
 import {motion} from 'framer-motion'
@@ -64,7 +65,7 @@ function Final() {
     return (
         <HotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} innerRef={inputRef}>
             <div className="App" style={{
-                backgroundImage: 'url(./assets/BGTimer.gif)'
+                backgroundImage: 'url(./assets/background.png)'
             }}>
                 <div className="line">
                     <div className="container">
@@ -83,7 +84,8 @@ function Final() {
                         </div>
                         <div className="left">
                             <div className="video" style={{
-                                backgroundImage: 'url(./assets/Logo.png)'
+                                backgroundImage: 'url(./assets/Logo.png)',
+                                backgroundSize: '600px',
                             }} />
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import './styles.css';
+import React from 'react';
 import Faculty from "../../components/Faculty";
 import {allFacs, back, socketUrl} from "../../config";
 import {HotKeys} from "react-hotkeys";
@@ -67,7 +68,7 @@ function Main() {
                         <div className="right">
                             <div className="video" style={{
                                 backgroundImage: 'url(./assets/Logo.png)',
-                                backgroundSize: '800px',
+                                backgroundSize: '600px',
                             }} />
                             <div className="FacultyList">
                                 {
