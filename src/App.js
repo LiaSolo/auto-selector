@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import './font/stylesheet.css'
+import './fonts/stylesheet.css'
 import {
     Routes,
     Route, BrowserRouter,

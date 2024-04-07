@@ -9,7 +9,7 @@ function FacultyPoints({params, points, id, currFac}) {
     useEffect(() => {
         if (currFac && id === currFac.faculty) {
             setColor('rgba(0, 0, 0, 0.5)');
-            setTimeout(() => setColor('rgba(221,160,221,0.9)'), 3000);
+            setTimeout(() => setColor('rgba(147,,255,0.7)'), 3000);
         }
     }, [currFac])
 
