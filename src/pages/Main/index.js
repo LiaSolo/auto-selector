@@ -67,8 +67,7 @@ function Main() {
                     <div className="container">
                         <div className="right">
                             <div className="video" style={{
-                                backgroundImage: 'url(./assets/Logo.png)',
-                                backgroundSize: '600px',
+                                backgroundImage: 'url(./assets/Logo.png)'
                             }} />
                             <div className="FacultyList">
                                 {

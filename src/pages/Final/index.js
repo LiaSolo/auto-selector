@@ -85,7 +85,6 @@ function Final() {
                         <div className="left">
                             <div className="video" style={{
                                 backgroundImage: 'url(./assets/Logo.png)',
-                                backgroundSize: '600px',
                             }} />
                         </div>
                     </div>
